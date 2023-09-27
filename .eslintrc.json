@@ -1,8 +1,6 @@
 {
   "plugins": ["@typescript-eslint"],
-  "extends": [
-    "plugin:eslint-comments/recommended"
-  ],
+  "extends": ["plugin:eslint-comments/recommended"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -26,7 +24,8 @@
       "extends": ["plugin:jest/recommended"],
       "rules": {
         "@typescript-eslint/unbound-method": "off",
-        "jest/unbound-method": "error"
+        "jest/unbound-method": "error",
+        "@typescript-eslint/typedef": "off"
       }
     }
   ],
@@ -97,7 +96,7 @@
         "leadingUnderscore": "forbid",
         "trailingUnderscore": "forbid",
         "types": ["boolean"],
-        "prefix": ["IS_", "is"]
+        "prefix": ["IS_", "is", "HAS_", "has"]
       },
       {
         "selector": [
@@ -139,7 +138,7 @@
         "format": ["UPPER_CASE"],
         "modifiers": ["const"],
         "types": ["boolean"],
-        "prefix": ["IS_"],
+        "prefix": ["IS_", "HAS_"],
         "leadingUnderscore": "forbid",
         "trailingUnderscore": "forbid"
       },
@@ -161,7 +160,7 @@
         "format": ["UPPER_CASE"],
         "modifiers": ["readonly"],
         "types": ["boolean"],
-        "prefix": ["IS_"],
+        "prefix": ["IS_", "HAS_"],
         "leadingUnderscore": "forbid",
         "trailingUnderscore": "forbid"
       },
@@ -175,19 +174,14 @@
         ],
         "format": ["camelCase"],
         "leadingUnderscore": "forbid",
-        "trailingUnderscore": "forbid"
+        "trailingUnderscore": "forbid",
+        "prefix": []
       },
       {
-        "selector": [
-          "classMethod",
-          "typeMethod",
-          "classProperty",
-          "typeProperty",
-          "parameterProperty"
-        ],
+        "selector": ["classProperty", "typeProperty", "parameterProperty"],
         "format": ["PascalCase"],
         "types": ["boolean"],
-        "prefix": ["is"],
+        "prefix": ["is", "has"],
         "leadingUnderscore": "forbid",
         "trailingUnderscore": "forbid"
       },
@@ -201,7 +195,7 @@
         "selector": ["parameter", "variable"],
         "format": ["snake_case"],
         "types": ["boolean"],
-        "prefix": ["is_"],
+        "prefix": ["is_", "has_"],
         "leadingUnderscore": "forbid",
         "trailingUnderscore": "forbid"
       },
@@ -264,10 +258,6 @@
     ],
     "@typescript-eslint/prefer-optional-chain": "warn",
     "@typescript-eslint/prefer-readonly": "warn",
-    "@typescript-eslint/prefer-readonly-parameter-types": [
-      "warn",
-      {"ignoreInferredTypes": true}
-    ],
     "@typescript-eslint/prefer-reduce-type-parameter": "warn",
     "@typescript-eslint/prefer-return-this-type": "warn",
     "@typescript-eslint/prefer-string-starts-ends-with": "warn",
